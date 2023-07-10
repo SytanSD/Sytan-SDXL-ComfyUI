@@ -5,6 +5,7 @@ he workflow is provided as a .json file which is easily loadable into the ComfyU
 ## Prerequisites
 
 Before you can use this workflow, you need to have ComfyUI installed. If you haven't installed it yet, you can find it [here](https://github.com/comfyanonymous/ComfyUI).
+If you do have ComfyUI, please make sure to update it to ensure you have the new bug fixes that enable this workflow to run properly.
 
 ## Installation
 
