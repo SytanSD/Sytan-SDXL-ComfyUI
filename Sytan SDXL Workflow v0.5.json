@@ -1,0 +1,1842 @@
+{
+  "last_node_id": 145,
+  "last_link_id": 536,
+  "nodes": [
+    {
+      "id": 134,
+      "type": "Reroute",
+      "pos": [
+        805.2004028320308,
+        -1248.6007812500018
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 514,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            515
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        920.2004028320308,
+        -1218.6007812500018
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 56
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 515
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            491
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 122,
+      "type": "SaveImage",
+      "pos": [
+        790,
+        -1173
+      ],
+      "size": [
+        404.31247693268847,
+        454.10477628174385
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 491
+        }
+      ],
+      "title": "Refiner Output",
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 4,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -305.06534425927657,
+        -621.4836639351809
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            528
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            532
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            513
+          ],
+          "slot_index": 2
+        }
+      ],
+      "title": "Refiner Model",
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "SDXL Refiner.safetensors"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 141,
+      "type": "Reroute",
+      "pos": [
+        454.93465574072343,
+        -601.4836639351809
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 532
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CLIP",
+          "links": [
+            531,
+            533
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 142,
+      "type": "Reroute",
+      "pos": [
+        454.93465574072343,
+        -621.4836639351809
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 528
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MODEL",
+          "links": [
+            529
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 120,
+      "type": "CLIPTextEncodeSDXLRefiner",
+      "pos": [
+        559.3724688311294,
+        -604.8169886593452
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 533,
+          "slot_index": 0
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 478,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": true
+              }
+            ]
+          },
+          "slot_index": 1
+        },
+        {
+          "name": "ascore",
+          "type": "FLOAT",
+          "link": 518,
+          "widget": {
+            "name": "ascore",
+            "config": [
+              "FLOAT",
+              {
+                "default": 6,
+                "min": 0,
+                "max": 1000,
+                "step": 0.01
+              }
+            ]
+          },
+          "slot_index": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            480
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Positive Refiner",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeSDXLRefiner"
+      },
+      "widgets_values": [
+        6,
+        4096,
+        4096,
+        "A cinematic photograph of a corgi sitting in a field of flowers with mountains off in the background at sunset with a cloudy sky"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 81,
+      "type": "CLIPTextEncodeSDXLRefiner",
+      "pos": [
+        559.3724688311294,
+        -574.8169886593452
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 531
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 494,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "ascore",
+          "type": "FLOAT",
+          "link": 534,
+          "widget": {
+            "name": "ascore",
+            "config": [
+              "FLOAT",
+              {
+                "default": 6,
+                "min": 0,
+                "max": 1000,
+                "step": 0.01
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            299
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Negative Refiner",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeSDXLRefiner"
+      },
+      "widgets_values": [
+        1,
+        4096,
+        4096,
+        "Deformed, unrealistic, bad quality, grainy, noisy, plastic, hazy, low contrast"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 126,
+      "type": "Reroute",
+      "pos": [
+        770.2418319675904,
+        -622.9673278703617
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 529
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MODEL",
+          "links": [
+            506
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 133,
+      "type": "Reroute",
+      "pos": [
+        770.2418319675904,
+        -582.9673278703617
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 513
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            514
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 10,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -305.06534425927657,
+        -51.483663935180815
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            527
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            524
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "title": "Base Model",
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "SDXL Base.safetensors"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 139,
+      "type": "Reroute",
+      "pos": [
+        434.93465574072343,
+        -31.483663935180807
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 524
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CLIP",
+          "links": [
+            522,
+            523
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 140,
+      "type": "Reroute",
+      "pos": [
+        434.93465574072343,
+        -51.483663935180815
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 527
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MODEL",
+          "links": [
+            535
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 82,
+      "type": "CLIPTextEncodeSDXL",
+      "pos": [
+        565.1764877083139,
+        15.549008194457578
+      ],
+      "size": {
+        "0": 400,
+        "1": 289.9999694824219
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 522,
+          "slot_index": 0
+        },
+        {
+          "name": "text_g",
+          "type": "STRING",
+          "link": 302,
+          "widget": {
+            "name": "text_g",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_G"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_l",
+          "type": "STRING",
+          "link": 476,
+          "widget": {
+            "name": "text_l",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_L"
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            304
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Negative Base",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeSDXL"
+      },
+      "widgets_values": [
+        4096,
+        4096,
+        0,
+        0,
+        4096,
+        4096,
+        "Deformed, unrealistic, bad quality, grainy, noisy, plastic, hazy, low contrast",
+        "Deformed, unrealistic, bad quality, grainy, noisy, plastic, hazy, low contrast"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 75,
+      "type": "CLIPTextEncodeSDXL",
+      "pos": [
+        565.1764877083139,
+        -14.450991805542433
+      ],
+      "size": {
+        "0": 400,
+        "1": 289.9999694824219
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 523,
+          "slot_index": 0
+        },
+        {
+          "name": "text_g",
+          "type": "STRING",
+          "link": 434,
+          "widget": {
+            "name": "text_g",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_G"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_l",
+          "type": "STRING",
+          "link": 470,
+          "widget": {
+            "name": "text_l",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_L"
+              }
+            ]
+          },
+          "slot_index": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            282
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Positive Base",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeSDXL"
+      },
+      "widgets_values": [
+        4096,
+        4096,
+        0,
+        0,
+        4096,
+        4096,
+        "A cinematic photograph of a corgi sitting in a field of flowers with mountains off in the background at sunset with a cloudy sky",
+        "cinematic, fujifilm, national geographic, nature, snowy mountains, flowers, colorful, overcast sky, sunset"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 43,
+      "type": "PrimitiveNode",
+      "pos": [
+        -310,
+        -890
+      ],
+      "size": [
+        609.0048783284278,
+        172.01026605320192
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            302,
+            476,
+            494
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": true
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Fundamental Negative",
+      "properties": {},
+      "widgets_values": [
+        "Deformed, unrealistic, bad quality, grainy, noisy, plastic, hazy, low contrast"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 78,
+      "type": "PrimitiveNode",
+      "pos": [
+        -310,
+        -1230
+      ],
+      "size": [
+        302.90152819995626,
+        300.84906034285655
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            434,
+            478
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": true
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Linguistic Positive",
+      "properties": {},
+      "widgets_values": [
+        "A cinematic photograph of a corgi sitting in a field of flowers with mountains off in the background at sunset with a cloudy sky"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 77,
+      "type": "PrimitiveNode",
+      "pos": [
+        6,
+        -1231
+      ],
+      "size": [
+        291.2458208572764,
+        302.58147739378865
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            470
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "text_l",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_L"
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Supporting Terms",
+      "properties": {},
+      "widgets_values": [
+        "cinematic, fujifilm, national geographic, nature, snowy mountains, flowers, colorful, overcast sky, sunset"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 123,
+      "type": "Note",
+      "pos": [
+        -734,
+        -1270
+      ],
+      "size": [
+        408.1121826171875,
+        560.35400390625
+      ],
+      "flags": {
+        "pinned": false
+      },
+      "order": 5,
+      "mode": 0,
+      "title": "Basic Prompting Guide",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Prompting: For the linguistic prompt, you should try to explain the image you want in a single sentence with proper grammar. For example:\n\nA photograph of a (subject) in a (location) at (time)\n\nthen you use the second text field to strengthen that prompt with a few carefully selected tags that will help, such as:\n\ncinematic, bokeh, photograph, (features about subject)\n\nFull prompt example:\n\nLinguistic: A cinematic photograph of a pretty woman with blonde hair and blue eyes in a park at sunset\n\nSupporting: clouds, nature, bokeh, f1.8, cinematic lighting, entered composition\n\nPhotographic tips\n\n1. Try and use words or entities that tie into realistic imagery, such as National geographic, Vogue, ethnographic, portrait, and similar words\n\n2. Do not use words like \"realism\" or \"realistic\" when prompting for photographs, as they are associated with art styles that depict \"realistic\" things, and such will weight towards traditional or digital art\n\n3. Feel free to use compositional words, such as \"centered subject\" or \"(object) to the side\", this can help a lot for achieving different and interesting results\n\n4. I recommend not going over 6 on the positive aesthetic score for the refiner when going for realism, I find that the higher you go, the more your images are likely to go into the direction of aesthetic paintings and \n\n"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 23,
+      "type": "KSamplerAdvanced",
+      "pos": [
+        880,
+        -623
+      ],
+      "size": [
+        268.3213269042951,
+        298
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 506
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 480
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 299
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 55
+        },
+        {
+          "name": "cfg",
+          "type": "FLOAT",
+          "link": 384,
+          "widget": {
+            "name": "cfg",
+            "config": [
+              "FLOAT",
+              {
+                "default": 8,
+                "min": 0,
+                "max": 100
+              }
+            ]
+          }
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "link": 475,
+          "widget": {
+            "name": "steps",
+            "config": [
+              "INT",
+              {
+                "default": 20,
+                "min": 1,
+                "max": 10000
+              }
+            ]
+          }
+        },
+        {
+          "name": "noise_seed",
+          "type": "INT",
+          "link": 482,
+          "widget": {
+            "name": "noise_seed",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 18446744073709552000
+              }
+            ]
+          },
+          "slot_index": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            56
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Second Pass Latent",
+      "properties": {
+        "Node name for S&R": "KSamplerAdvanced"
+      },
+      "widgets_values": [
+        "disable",
+        69,
+        "fixed",
+        20,
+        7.5,
+        "ddim",
+        "ddim_uniform",
+        13,
+        20,
+        "disable"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        330,
+        -1230
+      ],
+      "size": [
+        423.9580395429593,
+        106
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            49
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Image Resolution",
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 115,
+      "type": "PrimitiveNode",
+      "pos": [
+        330,
+        -1080
+      ],
+      "size": [
+        210,
+        82
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 7,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            474,
+            475
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "steps",
+            "config": [
+              "INT",
+              {
+                "default": 20,
+                "min": 1,
+                "max": 10000
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Steps",
+      "properties": {},
+      "widgets_values": [
+        20,
+        "fixed"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 101,
+      "type": "PrimitiveNode",
+      "pos": [
+        550,
+        -1080
+      ],
+      "size": [
+        210,
+        82
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            380
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "cfg",
+            "config": [
+              "FLOAT",
+              {
+                "default": 8,
+                "min": 0,
+                "max": 100
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Base CFG",
+      "properties": {},
+      "widgets_values": [
+        7.5,
+        "fixed"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 66,
+      "type": "PrimitiveNode",
+      "pos": [
+        330,
+        -940
+      ],
+      "size": {
+        "0": 210,
+        "1": 82
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            214,
+            482
+          ],
+          "widget": {
+            "name": "noise_seed",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 18446744073709552000
+              }
+            ]
+          },
+          "slot_index": 0
+        }
+      ],
+      "title": "Seed",
+      "properties": {},
+      "widgets_values": [
+        69,
+        "increment"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 102,
+      "type": "PrimitiveNode",
+      "pos": [
+        550,
+        -940
+      ],
+      "size": {
+        "0": 210,
+        "1": 82
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            384
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "cfg",
+            "config": [
+              "FLOAT",
+              {
+                "default": 8,
+                "min": 0,
+                "max": 100
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Refiner CFG",
+      "properties": {},
+      "widgets_values": [
+        7.5,
+        "fixed"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 137,
+      "type": "PrimitiveNode",
+      "pos": [
+        330,
+        -800
+      ],
+      "size": [
+        210,
+        82
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            518
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "ascore",
+            "config": [
+              "FLOAT",
+              {
+                "default": 6,
+                "min": 0,
+                "max": 1000,
+                "step": 0.01
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Positive A Score",
+      "properties": {},
+      "widgets_values": [
+        6,
+        "fixed"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 138,
+      "type": "PrimitiveNode",
+      "pos": [
+        550,
+        -800
+      ],
+      "size": {
+        "0": 210,
+        "1": 82
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 12,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            534
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "ascore",
+            "config": [
+              "FLOAT",
+              {
+                "default": 6,
+                "min": 0,
+                "max": 1000,
+                "step": 0.01
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Negative A Score",
+      "properties": {},
+      "widgets_values": [
+        1,
+        "fixed"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 22,
+      "type": "KSamplerAdvanced",
+      "pos": [
+        880.2418319675904,
+        -272.9673278703617
+      ],
+      "size": [
+        269.98184620250345,
+        298
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 536
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 282
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 304
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 49
+        },
+        {
+          "name": "noise_seed",
+          "type": "INT",
+          "link": 214,
+          "widget": {
+            "name": "noise_seed",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 18446744073709552000
+              }
+            ]
+          }
+        },
+        {
+          "name": "cfg",
+          "type": "FLOAT",
+          "link": 380,
+          "widget": {
+            "name": "cfg",
+            "config": [
+              "FLOAT",
+              {
+                "default": 8,
+                "min": 0,
+                "max": 100
+              }
+            ]
+          }
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "link": 474,
+          "widget": {
+            "name": "steps",
+            "config": [
+              "INT",
+              {
+                "default": 20,
+                "min": 1,
+                "max": 10000
+              }
+            ]
+          },
+          "slot_index": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            55
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "First Pass Latent",
+      "properties": {
+        "Node name for S&R": "KSamplerAdvanced"
+      },
+      "widgets_values": [
+        "enable",
+        69,
+        "fixed",
+        20,
+        7.5,
+        "ddim",
+        "ddim_uniform",
+        0,
+        13,
+        "enable"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 145,
+      "type": "Reroute",
+      "pos": [
+        767,
+        -51
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 535
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MODEL",
+          "links": [
+            536
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    }
+  ],
+  "links": [
+    [
+      49,
+      5,
+      0,
+      22,
+      3,
+      "LATENT"
+    ],
+    [
+      55,
+      22,
+      0,
+      23,
+      3,
+      "LATENT"
+    ],
+    [
+      56,
+      23,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      214,
+      66,
+      0,
+      22,
+      4,
+      "INT"
+    ],
+    [
+      282,
+      75,
+      0,
+      22,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      299,
+      81,
+      0,
+      23,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      302,
+      43,
+      0,
+      82,
+      1,
+      "STRING"
+    ],
+    [
+      304,
+      82,
+      0,
+      22,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      380,
+      101,
+      0,
+      22,
+      5,
+      "FLOAT"
+    ],
+    [
+      384,
+      102,
+      0,
+      23,
+      4,
+      "FLOAT"
+    ],
+    [
+      434,
+      78,
+      0,
+      75,
+      1,
+      "STRING"
+    ],
+    [
+      470,
+      77,
+      0,
+      75,
+      2,
+      "STRING"
+    ],
+    [
+      474,
+      115,
+      0,
+      22,
+      6,
+      "INT"
+    ],
+    [
+      475,
+      115,
+      0,
+      23,
+      5,
+      "INT"
+    ],
+    [
+      476,
+      43,
+      0,
+      82,
+      2,
+      "STRING"
+    ],
+    [
+      478,
+      78,
+      0,
+      120,
+      1,
+      "STRING"
+    ],
+    [
+      480,
+      120,
+      0,
+      23,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      482,
+      66,
+      0,
+      23,
+      6,
+      "INT"
+    ],
+    [
+      491,
+      8,
+      0,
+      122,
+      0,
+      "IMAGE"
+    ],
+    [
+      494,
+      43,
+      0,
+      81,
+      1,
+      "STRING"
+    ],
+    [
+      506,
+      126,
+      0,
+      23,
+      0,
+      "MODEL"
+    ],
+    [
+      513,
+      4,
+      2,
+      133,
+      0,
+      "*"
+    ],
+    [
+      514,
+      133,
+      0,
+      134,
+      0,
+      "*"
+    ],
+    [
+      515,
+      134,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      518,
+      137,
+      0,
+      120,
+      2,
+      "FLOAT"
+    ],
+    [
+      522,
+      139,
+      0,
+      82,
+      0,
+      "CLIP"
+    ],
+    [
+      523,
+      139,
+      0,
+      75,
+      0,
+      "CLIP"
+    ],
+    [
+      524,
+      10,
+      1,
+      139,
+      0,
+      "*"
+    ],
+    [
+      527,
+      10,
+      0,
+      140,
+      0,
+      "*"
+    ],
+    [
+      528,
+      4,
+      0,
+      142,
+      0,
+      "*"
+    ],
+    [
+      529,
+      142,
+      0,
+      126,
+      0,
+      "*"
+    ],
+    [
+      531,
+      141,
+      0,
+      81,
+      0,
+      "CLIP"
+    ],
+    [
+      532,
+      4,
+      1,
+      141,
+      0,
+      "*"
+    ],
+    [
+      533,
+      141,
+      0,
+      120,
+      0,
+      "CLIP"
+    ],
+    [
+      534,
+      138,
+      0,
+      81,
+      2,
+      "FLOAT"
+    ],
+    [
+      535,
+      140,
+      0,
+      145,
+      0,
+      "*"
+    ],
+    [
+      536,
+      145,
+      0,
+      22,
+      0,
+      "MODEL"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Final Image",
+      "bounding": [
+        779,
+        -1302,
+        427,
+        593
+      ],
+      "color": "#444"
+    },
+    {
+      "title": "Samplers",
+      "bounding": [
+        760,
+        -700,
+        451,
+        758
+      ],
+      "color": "#444"
+    },
+    {
+      "title": "Models, Encoders, and LoRAs",
+      "bounding": [
+        -318,
+        -699,
+        1067,
+        759
+      ],
+      "color": "#444"
+    },
+    {
+      "title": "Prompting",
+      "bounding": [
+        -318,
+        -1300,
+        626,
+        590
+      ],
+      "color": "#444"
+    },
+    {
+      "title": "Gen Settings",
+      "bounding": [
+        318,
+        -1301,
+        451,
+        592
+      ],
+      "color": "#444"
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
