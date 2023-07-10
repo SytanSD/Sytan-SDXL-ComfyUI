@@ -1,4 +1,4 @@
-# Sytan-SDXL-ComfyUI
+# Sytan SDXL ComfyUI
 A hub dedicated to development and upkeep of the Sytan SDXL workflow for ComfyUI
 he workflow is provided as a .json file which is easily loadable into the ComfyUI environment.
 
@@ -32,4 +32,4 @@ Distributed under the GNU General Public License v3.0. See `LICENSE` for more in
 
 ## Acknowledgements
 
-Thanks to the creators of ComfyUI for creating a flexible and powerful UI.
+Thanks to the creators of ComfyUI for creating a flexible and powerful UI. Another special thanks to PseudoTerminalX, Caith, ThrottleKitty, ComfyAnonymous, HumbleMikey, CaptnSeraph, and Joe Penna for the support and help working on this project.
