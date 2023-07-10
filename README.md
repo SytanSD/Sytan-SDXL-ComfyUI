@@ -32,7 +32,7 @@ Distributed under the GNU General Public License v3.0. See `LICENSE` for more in
 
 ## Support
 
-I hope you all enjoy what I do, if you'd like to support me, donations to my PayPal (flamas152@gmail.com) would be greatly appreciated, as I am currently 19 an unemployed! Much appreciation everybody!
+I hope you all enjoy what I do, if you'd like to support me, donations to my BuyMeACoffee (https://bmc.link/SytanSD) would be greatly appreciated, as I am currently 19 an unemployed! Much appreciation everybody!
 
 ## Acknowledgements
 
