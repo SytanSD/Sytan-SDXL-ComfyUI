@@ -1,3 +1,6 @@
+# Support
+If you like anything I have done here and wish to donate/support me monthly in order for me to keep pioneering new hacks and tricks for running SDXL, please feel free to drop by my Ko-Fi at https://ko-fi.com/sytansd
+
 # Sytan SDXL ComfyUI
 A hub dedicated to development and upkeep of the Sytan SDXL workflow for ComfyUI
 he workflow is provided as a .json file which is easily loadable into the ComfyUI environment.
@@ -29,10 +32,6 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 ## License
 
 Distributed under the GNU General Public License v3.0. See `LICENSE` for more information.
-
-## Support
-
-I hope you all enjoy what I do, if you'd like to support me, donations to my BuyMeACoffee (https://bmc.link/SytanSD) would be greatly appreciated, as I am currently 19 an unemployed! Much appreciation everybody!
 
 ## Acknowledgements
 
